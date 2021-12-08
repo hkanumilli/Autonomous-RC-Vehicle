@@ -6,8 +6,16 @@ import math
 class RCControl(object):
 
     def __init__(self):
-        pass
-        # self.serial_port = serial.Serial(serial_port, 115200, timeout=1)
+        GPIO.setwarnings(False)
+
+        # GPIO Mode (BOARD / BCM)
+        GPIO.setmode(GPIO.BCM)
+
+        # GPIO Pins
+        GPIO_MOTOR1 = 18
+        GPIO_MOTOR2 = 24
+        GPIO_MOTOR3 = 12
+        GPIO_MOTOR4 = 16
 
     def steer(self, prediction):
         if prediction == 2:
