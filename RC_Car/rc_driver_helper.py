@@ -20,16 +20,25 @@ class RCControl(object):
     def steer(self, prediction):
         if prediction == 2:
             print("Forward")
+            GPIO.output(GPIO_MOTOR1, True)
+            GPIO.output(GPIO_MOTOR2, True)
         elif prediction == 0:
+            GPIO.output(MOTOR3, True)
+            GPIO.output(MOTOR1, True)
             print("Left")
         elif prediction == 1:
+            GPIO.output(MOTOR4, True)
+            GPIO.output(MOTOR2, True)
             print("Right")
         else:
             print('Stop Vehile')
             self.stop()
 
     def stop(self):
-        pass
+        GPIO.output(MOTOR3, False)
+        GPIO.output(MOTOR1, False)
+        GPIO.output(MOTOR4, False)
+        GPIO.output(MOTOR2, False)
 
 
 class DistanceToCamera(object):
